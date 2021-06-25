@@ -1,6 +1,7 @@
 version: '3'
 services:
     metabase:
+        container_name: metabase-dck    
         image: metabase_img
         volumes: 
             - ./volumes/metabase:/metabase-data 
@@ -19,11 +20,15 @@ services:
         networks:
             - metabase         
 
-    postgres:            
-        image: postgres:9.6.22
+    postgres:
+        container_name: postgres-dck           
+        image: postgres:9.6.22    
         ports:
-            - 5432:5432        
+            - 5432:5432
+        volumes:
+            - 'postgres:/var/lib/postgresql/data'                    
         environment:
+            - PGDATA=/var/lib/postgresql/data
             - POSTGRES_USER=sys-sigti@weg.net
             - POSTGRES_PASSWORD=@TiWegKPI2021
             - POSTGRES_DB=postgres_metabase
@@ -31,6 +36,7 @@ services:
             - metabase 
 
     pgadmin:
+        container_name: pgadmin-dck
         image: dpage/pgadmin4:5.4
         restart: always
         ports:
