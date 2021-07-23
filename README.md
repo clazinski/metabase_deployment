@@ -27,12 +27,12 @@ Since the purpose of my project is to develop a new architecture for an existing
 
 2. Inside the Metabase container, run the following commands:
 
-`**export MB_DB_TYPE=postgres**
-**export MB_DB_DBNAME=<database_name>**
-**export MB_DB_PORT=5432**
-**export MB_DB_USER=<my_user>**
-**export MB_DB_PASS=<my_password>**
-**export MB_DB_HOST=postgres**`
+`export MB_DB_TYPE=postgres`<br>
+`export MB_DB_DBNAME=<database_name>`<br>
+`export MB_DB_PORT=5432`<br>
+`export MB_DB_USER=<my_user>`<br>
+`export MB_DB_PASS=<my_password>`<br>
+`export MB_DB_HOST=postgres`<br>
 
 right after, we go into the "app" folder (cd /app) and run this command:
 
