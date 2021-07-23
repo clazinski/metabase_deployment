@@ -27,12 +27,12 @@ Since the purpose of my project is to develop a new architecture for an existing
 
 2. Inside the Metabase container, run the following commands:
 
-**export MB_DB_TYPE=postgres**
-**export MB_DB_DBNAME=postgres_metabase**
+`**export MB_DB_TYPE=postgres**
+**export MB_DB_DBNAME=<database_name>**
 **export MB_DB_PORT=5432**
 **export MB_DB_USER=<my_user>**
 **export MB_DB_PASS=<my_password>**
-**export MB_DB_HOST=postgres**
+**export MB_DB_HOST=postgres**`
 
 right after, we go into the "app" folder (cd /app) and run this command:
 
@@ -40,7 +40,7 @@ right after, we go into the "app" folder (cd /app) and run this command:
 
 3. When running this last line, I got an error (something like "ERROR: duplicate key value"). If you had the same error, to be able to do the migration, try entering the postgres container (docker exec -it container-name-postgres sh) and log into the database:
 
-`psql -U postgres -W metabase` #enter and pass the postgres password
+`psql -U <my_user> -W <database_name>` #enter and pass the postgres password
 
 after logging in, run this code:
 
