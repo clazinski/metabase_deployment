@@ -53,6 +53,6 @@ DROP INDEX index_name;`
 
 transferring data from postgres_1 database to another postgres (postgres_2), on different servers:
 ```bash
-pg_dump -h <host> -p <port> -U <user_postgres_1> -W <password> -d <database_name_postgres_1> | psql -h <host> -p <port> -U <user_postgres_2> <database_name_postgres_2>
+pg_dump -h host -p port -U user_postgres_1 -W password -d database_name_postgres_1 | psql -h host -p port -U user_postgres_2 database_name_postgres_2
 ```
 - to create a new database on the transferring, just pass the -C flag after "pg_dump".
