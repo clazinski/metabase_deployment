@@ -1,16 +1,16 @@
 # Metabase
 
-## build image 
+## Build Image 
 ```bash
 docker build -t metabase_img -f docker/dockerfile.dockerfile .
 ```
 
-## run metabase
+## Run Metabase
 ```bash
 docker run -d -p 3000:3000 --name metabase metabase_img
 ```
 
-## docker compose
+## Docker Compose
 ```bash
 docker-compose -f docker/docker-compose.yml up
 ```
@@ -18,7 +18,7 @@ docker-compose -f docker/docker-compose.yml up
 - **Issues:** the directory of the volume binding has already been initialized after the first start, so the user (postgres) and the database creation only happen on the first start. The `/var/lib /postgresql/data` shouldn't contain any database files of data. 
 - **Resolution:** add `PGDATA=/var/lib/postgresql/data` to the postgres environment and finally set the volumes (`'postgres:/var/lib/postgresql/data'`).
 
-## migrating h2 docs to postgres
+## Migrating H2 Docs To Postgres
 
 Since the purpose of my project is to develop a new architecture for an existing server in Metabase, one of the steps in the process was to migrating data from H2 to Postgres (new architecture), so I will describe it below:
 
@@ -49,10 +49,10 @@ DROP INDEX index_name;`
 
 4. Finally, step 2 is repeated and the data was successfully migrated.
 
-## from one postgres to another
+## From One Postgres To Another
 
-transferring data from postgres_1 database to another postgres (postgres_2), on different servers:
+Transferring data from postgres_1 database to another postgres (postgres_2), on different servers:
 ```bash
 pg_dump -h host -p port -U user_postgres_1 -W password -d database_name_postgres_1 | psql -h host -p port -U user_postgres_2 database_name_postgres_2
 ```
-- to create a new database on the transferring, just pass the -C flag after "pg_dump".
+- To create a new database on the transferring, just pass the -C flag after "pg_dump".
